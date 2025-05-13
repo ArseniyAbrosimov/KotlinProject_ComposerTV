@@ -6,6 +6,7 @@ import com.example.composertv.data.DefaultAppContainer
 
 class ComposerApplication : Application() {
     lateinit var container: AppContainer
+
     override fun onCreate() {
         super.onCreate()
         container = DefaultAppContainer()
