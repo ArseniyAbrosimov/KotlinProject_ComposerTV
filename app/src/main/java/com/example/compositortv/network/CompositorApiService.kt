@@ -1,7 +1,7 @@
-package com.example.composertv.network
+package com.example.compositortv.network
 
-import com.example.composertv.model.FilmCollectionResponse
-import com.example.composertv.model.Film
+import com.example.compositortv.model.Film
+import com.example.compositortv.model.FilmCollectionResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -20,13 +20,18 @@ enum class Collection {
     ZOMBIE_THEME,
     CATASTROPHE_THEME,
     KIDS_ANIMATION_THEME,
-    POPULAR_SERIES
+    POPULAR_SERIES,
 }
 
-interface ComposerApiService {
+interface CompositorApiService {
     @GET("api/v2.2/films/{id}")
-    suspend fun getFilmById(@Path("id") id: Int): Film
+    suspend fun getFilmById(
+        @Path("id") id: Int,
+    ): Film
+
     @GET("api/v2.2/films/collections")
-    suspend fun getNewest(@Query("type") collection: Collection = Collection.CLOSES_RELEASES,
-                          @Query("page") page:Int): FilmCollectionResponse
+    suspend fun getNewest(
+        @Query("type") collection: Collection = Collection.CLOSES_RELEASES,
+        @Query("page") page: Int,
+    ): FilmCollectionResponse
 }

@@ -9,19 +9,20 @@ plugins {
 }
 
 android {
-    namespace = "com.example.composertv"
+    namespace = "com.example.compositortv"
     compileSdk = 35
 
-    val localProperties = Properties().apply {
-        load(rootProject.file("local.properties").inputStream())
-    }
+    val localProperties =
+        Properties().apply {
+            load(rootProject.file("local.properties").inputStream())
+        }
 
     buildFeatures {
-        buildConfig = true  // Включает генерацию BuildConfig
+        buildConfig = true // Включает генерацию BuildConfig
     }
 
     defaultConfig {
-        applicationId = "com.example.composertv"
+        applicationId = "com.example.compositortv"
         minSdk = 29
         targetSdk = 35
         versionCode = 1
@@ -35,7 +36,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -69,7 +70,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(libs.retrofit)
 
@@ -77,5 +77,4 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 //    debugImplementation(libs.androidx.ui.tooling)
 //    debugImplementation(libs.androidx.ui.test.manifest)
-
 }

@@ -1,4 +1,4 @@
-package com.example.composertv.ui
+package com.example.compositortv.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -6,21 +6,21 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Surface
-import com.example.composertv.ui.screens.ComposerViewModel
-import com.example.composertv.ui.screens.HomeScreen
+import com.example.compositortv.ui.screens.CompositorViewModel
+import com.example.compositortv.ui.screens.HomeScreen
 
 @Suppress("ktlint:standard:function-naming")
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
-fun ComposerApp() {
+fun CompositorApp() {
     Surface(
         modifier = Modifier.fillMaxSize(),
     ) {
-        val composerViewModel: ComposerViewModel =
-            viewModel(factory = ComposerViewModel.Factory)
+        val compositorViewModel: CompositorViewModel =
+            viewModel(factory = CompositorViewModel.Factory)
         HomeScreen(
-            composerUiState = composerViewModel.composerUiState,
-            retryAction = composerViewModel::updateMain,
+            compositorUiState = compositorViewModel.compositorUiState,
+            retryAction = compositorViewModel::updateMain,
             modifier = Modifier.fillMaxSize(),
         )
     }

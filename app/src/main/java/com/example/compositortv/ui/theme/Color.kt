@@ -1,4 +1,4 @@
-package com.example.composertv.ui.theme
+package com.example.compositortv.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

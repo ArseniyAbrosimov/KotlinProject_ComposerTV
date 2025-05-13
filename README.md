@@ -1,4 +1,4 @@
-# ComposerTV
+# CompositorTV
 
 ## Идея проекта
 

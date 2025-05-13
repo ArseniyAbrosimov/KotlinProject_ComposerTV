@@ -1,5 +1,4 @@
-package com.example.composertv.model
-
+package com.example.compositortv.model
 
 data class Film(
     val kinopoiskId: Int,
@@ -19,11 +18,10 @@ data class Film(
     val type: FilmType,
     val ratingAgeLimits: String?,
     val genres: List<Genre>,
-    val completed: Boolean?
+    val completed: Boolean?,
 ) {
-
     data class Genre(
-        val genre: String
+        val genre: String,
     )
 
     enum class ProductionStatus {
@@ -32,7 +30,7 @@ data class Film(
         COMPLETED,
         ANNOUNCED,
         UNKNOWN,
-        POST_PRODUCTION
+        POST_PRODUCTION,
     }
 
     enum class FilmType {
@@ -40,6 +38,6 @@ data class Film(
         VIDEO,
         TV_SERIES,
         MINI_SERIES,
-        TV_SHOW
+        TV_SHOW,
     }
 }

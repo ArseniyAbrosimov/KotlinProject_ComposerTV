@@ -1,4 +1,4 @@
-package com.example.composertv.ui.screens
+package com.example.compositortv.ui.screens
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,27 +8,27 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.composertv.ComposerApplication
-import com.example.composertv.data.ComposerRepository
-import com.example.composertv.model.FilmCollectionResponse
+import com.example.compositortv.CompositorApplication
+import com.example.compositortv.data.CompositorRepository
+import com.example.compositortv.model.FilmCollectionResponse
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-sealed interface ComposerUiState {
+sealed interface CompositorUiState {
     data class Success(
         val newest: FilmCollectionResponse,
-    ) : ComposerUiState
+    ) : CompositorUiState
 
-    object Error : ComposerUiState
+    object Error : CompositorUiState
 
-    object Loading : ComposerUiState
+    object Loading : CompositorUiState
 }
 
-class ComposerViewModel(
-    private val composerRepository: ComposerRepository,
+class CompositorViewModel(
+    private val compositorRepository: CompositorRepository,
 ) : ViewModel() {
-    var composerUiState: ComposerUiState by mutableStateOf(ComposerUiState.Loading)
+    var compositorUiState: CompositorUiState by mutableStateOf(CompositorUiState.Loading)
         private set
 
     init {
@@ -37,14 +37,14 @@ class ComposerViewModel(
 
     fun updateMain() {
         viewModelScope.launch {
-            composerUiState = ComposerUiState.Loading
-            composerUiState =
+            compositorUiState = CompositorUiState.Loading
+            compositorUiState =
                 try {
-                    ComposerUiState.Success(composerRepository.getNewest())
+                    CompositorUiState.Success(compositorRepository.getNewest())
                 } catch (e: IOException) {
-                    ComposerUiState.Error
+                    CompositorUiState.Error
                 } catch (e: HttpException) {
-                    ComposerUiState.Error
+                    CompositorUiState.Error
                 }
         }
     }
@@ -55,10 +55,10 @@ class ComposerViewModel(
                 initializer {
                     val application = (
                         this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY]
-                            as ComposerApplication
+                            as CompositorApplication
                     )
-                    val composerRepository = application.container.composerRepository
-                    ComposerViewModel(composerRepository = composerRepository)
+                    val compositorRepository = application.container.compositorRepository
+                    CompositorViewModel(compositorRepository = compositorRepository)
                 }
             }
     }

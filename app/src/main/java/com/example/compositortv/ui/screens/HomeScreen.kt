@@ -1,4 +1,4 @@
-package com.example.composertv.ui.screens
+package com.example.compositortv.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,22 +22,22 @@ import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.composertv.R
-import com.example.composertv.model.FilmCollectionResponse
+import com.example.compositortv.R
+import com.example.compositortv.model.FilmCollectionResponse
 
 @Suppress("ktlint:standard:function-naming")
 @Composable
 fun HomeScreen(
-    composerUiState: ComposerUiState,
+    compositorUiState: CompositorUiState,
     retryAction: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
-    when (composerUiState) {
-        is ComposerUiState.Loading -> LoadingScreen(modifier.size(200.dp))
-        is ComposerUiState.Success ->
+    when (compositorUiState) {
+        is CompositorUiState.Loading -> LoadingScreen(modifier.size(200.dp))
+        is CompositorUiState.Success ->
             ListScreen(
-                newest = composerUiState.newest,
+                newest = compositorUiState.newest,
                 modifier = modifier,
                 contentPadding = contentPadding,
             )
@@ -122,7 +122,7 @@ fun ErrorScreen(
 // @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 // @Composable
 // fun GreetingPreviewN() {
-//    ComposerTVTheme {
+//    CompositorTVTheme {
 //
 //        Surface(
 //            modifier = Modifier.fillMaxSize(),
@@ -137,7 +137,7 @@ fun ErrorScreen(
 // @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 // @Composable
 // fun GreetingPreviewL() {
-//    ComposerTVTheme {
+//    CompositorTVTheme {
 //
 //        Surface(
 //            modifier = Modifier.fillMaxSize(),
