@@ -47,12 +47,11 @@ val Typography =
                     FontFamily(
                         Font(
                             R.font.jetbrainsmed,
-                            FontWeight.W900,
+                            FontWeight.W100,
                         ),
                     ),
-                fontWeight = FontWeight.Medium,
-                fontSize = 11.sp,
-                lineHeight = 16.sp,
+                fontSize = 17.sp,
+                lineHeight = 10.sp,
                 letterSpacing = 0.5.sp,
             ),
     )

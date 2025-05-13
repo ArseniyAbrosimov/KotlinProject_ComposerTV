@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CompositorTV</string>
+    <string name="title_new">Новое</string>
 </resources>
