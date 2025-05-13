@@ -1,15 +1,19 @@
 package com.example.composertv.data
 
-import com.example.composertv.network.ConverterApiService
+import com.example.composertv.network.ComposerApiService
 import com.example.composertv.model.Film
+import com.example.composertv.model.FilmCollectionResponse
 
 interface ComposerRepository {
     suspend fun getFilmById(id: Int): Film
+    suspend fun getNewest(page: Int = 1): FilmCollectionResponse
 }
 
 
 class DefaultComposerRepository(
-    private val converterApiService: ConverterApiService
+    private val converterApiService: ComposerApiService
 ) : ComposerRepository {
     override suspend fun getFilmById(id: Int): Film = converterApiService.getFilmById(id)
+    override suspend fun getNewest(page: Int): FilmCollectionResponse = converterApiService.getNewest(page = page)
 }
+

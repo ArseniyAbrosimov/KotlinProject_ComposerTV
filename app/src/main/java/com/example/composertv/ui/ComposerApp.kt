@@ -1,7 +1,6 @@
 package com.example.composertv.ui
 
 
-import com.example.composertv.ui.screens.
 
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Surface
@@ -10,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.tv.material3.MaterialTheme
+import com.example.composertv.ui.screens.ComposerViewModel
+import com.example.composertv.ui.screens.HomeScreen
 
 
 @OptIn(ExperimentalTvMaterial3Api::class)
@@ -18,13 +19,12 @@ fun ComposerApp() {
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
-        val amphibiansViewModel: AmphibiansViewModel =
-            viewModel(factory = AmphibiansViewModel.Factory)
+        val composerViewModel: ComposerViewModel =
+            viewModel(factory = ComposerViewModel.Factory)
         HomeScreen(
-            amphibiansUiState = amphibiansViewModel.amphibiansUiState,
-            retryAction = amphibiansViewModel::getAmphibians,
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = it
+            composerUiState = composerViewModel.composerUiState,
+            retryAction = composerViewModel::updateMain,
+            modifier = Modifier.fillMaxSize()
         )
     }
 }

@@ -2,12 +2,13 @@ package com.example.composertv.data
 
 import retrofit2.Retrofit
 
-import com.example.composertv.network.ConverterApiService
+import com.example.composertv.network.ComposerApiService
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
+import com.example.composertv.BuildConfig
 
 interface AppContainer {
-    val amphibiansRepository: ComposerRepository
+    val composerRepository: ComposerRepository
 }
 
 class DefaultAppContainer : AppContainer {
@@ -16,22 +17,23 @@ class DefaultAppContainer : AppContainer {
     val httpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
-                .addHeader("X-API-KEY", "...")
+                .addHeader("X-API-KEY", BuildConfig.API_KEY)
                 .build()
             chain.proceed(request)
         }
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASE_URL)
+        .client(httpClient)
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private val retrofitService: ConverterApiService by lazy {
-        retrofit.create(ConverterApiService::class.java)
+    private val retrofitService: ComposerApiService by lazy {
+        retrofit.create(ComposerApiService::class.java)
     }
 
-    override val amphibiansRepository: ComposerRepository by lazy {
+    override val composerRepository: ComposerRepository by lazy {
         DefaultComposerRepository(retrofitService)
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -10,6 +12,14 @@ android {
     namespace = "com.example.composertv"
     compileSdk = 35
 
+    val localProperties = Properties().apply {
+        load(rootProject.file("local.properties").inputStream())
+    }
+
+    buildFeatures {
+        buildConfig = true  // Включает генерацию BuildConfig
+    }
+
     defaultConfig {
         applicationId = "com.example.composertv"
         minSdk = 29
@@ -17,6 +27,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("API_KEY")}\"")
     }
 
     buildTypes {
